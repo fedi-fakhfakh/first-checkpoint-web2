@@ -1,0 +1,30 @@
+ALGORITHM task1
+VAR
+    p : STRING[50];
+    i : INTEGER;
+    num_vowels :INTEGER;
+    num_words :INTEGER;
+    counting : BOOLEAN;
+
+BEGIN
+    counting :=false;
+    Write("enter a sentece that ends with a point")
+    Read(p)
+    FOR i FROM 0 TO p.length-2 STEP 1 DO
+        IF (p[i] = "a" OR "A" OR "e" OR "E" OR "i" OR "I" OR "o" OR "O" OR "u" OR "U" OR "y" OR "Y") THEN
+            num_vowels := num_vowels + 1;
+        END_IF
+        
+        IF (p[i] = " " AND counting = true) THEN
+            counting := false;
+            num_words :=num_words + 1;
+        END_IF
+        
+        IF (i = 0 OR (p[i] = " " AND counting = false )) THEN
+            counting :=true
+        END_IF
+        
+    END_FOR
+    Write(num_words)
+    Write(num_vowels)    
+END
